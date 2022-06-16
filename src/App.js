@@ -6,15 +6,35 @@ import Movie from './Movie';
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([
+    {
+      title: 'A Knight\'s Tale',
+      director: 'Brian Helgeland',
+      year: '2001',
+      color: 'red'
+    },
+  ]);
   const [movieTitle, setMovieTitle] = useState('');
   const [movieDirector, setMovieDirector] = useState('');
   const [movieYearReleased, setMovieYearReleased] = useState('');
-  const [movieColor, setMovieColor] = useState('');
+  const [movieColor, setMovieColor] = useState('red');
 
 
   function submitMovie(e) {
     e.preventDefault();
+
+    const movie = {
+      title: movieTitle,
+      director: movieDirector,
+      year: movieYearReleased,
+      color: movieColor
+    };
+
+    setMovies([...movies, movie]);
+    setMovieTitle('');
+    setMovieDirector('');
+    setMovieYearReleased('');
+    setMovieColor('');
   }
 
   function handleDeleteMovie() {
@@ -49,8 +69,8 @@ function App() {
       
 
       <div>
-        Section to show the list of movies
-        <MovieList />
+        <MovieList movies={movies} 
+          handleDeleteMovie={handleDeleteMovie}/>
       </div>
 
     </div>
