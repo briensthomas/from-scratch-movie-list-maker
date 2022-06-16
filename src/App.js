@@ -7,10 +7,11 @@ import { useState, useEffect } from 'react';
 
 function App() {
   const [movies, setMovies] = useState([]);
-  const [movieTitle, setMovieTitle] = useState('Movie Title');
-  const [movieDirector, setMovieDirector] = useState('Director Name');
-  const [movieFormYearReleased, setMovieFormYearReleased] = useState('Year Released');
-  const [movieFormColor, setMovieFormColor] = useState('green');
+  const [movieTitle, setMovieTitle] = useState('');
+  const [movieDirector, setMovieDirector] = useState('');
+  const [movieYearReleased, setMovieYearReleased] = useState('');
+  const [movieColor, setMovieColor] = useState('');
+
 
   function submitMovie(e) {
     e.preventDefault();
@@ -30,19 +31,22 @@ function App() {
 
   return (
     <div className="App">
-      <div className='movie-form'>
-        Section for new movie inputs
+      <header>
+
+      </header>
+      <div className='top'>
         <MovieForm setMovieTitle={setMovieTitle}
+          movieTitle={movieTitle}
           setMovieDirector={setMovieDirector}
-          setMovieFormYearReleased={setMovieFormYearReleased}
-          setMovieFormColor={setMovieFormColor} 
+          movieDirector={movieDirector}
+          setMovieYearReleased={setMovieYearReleased}
+          movieYearReleased={movieYearReleased}
+          setMovieColor={setMovieColor} 
+          movieColor={movieColor}
           submitMovie={submitMovie} />
       </div>
 
-      <div>
-        Section to render a movie card
-        <Movie />
-      </div>
+      
 
       <div>
         Section to show the list of movies
