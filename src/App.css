@@ -1,38 +1,81 @@
-.App {
-  text-align: center;
+/* Universal */
+
+body, html, #root, .App {
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+label {
+  display: block;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input, select {
+  margin: 0px 0px 5px 5px;
+}
+/* Header Styling */
+
+
+/* Main/Body/Stuff */
+
+.top {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 500px;
+  margin-top: 15px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form-and-preview {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.movie-form {
   display: flex;
   flex-direction: column;
+  width: 40%;
+  height: 100%;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.movie-preview {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 80%;
+  align-items: center;
+  justify-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.preview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 250px;
+  margin: 10px;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.35);
 }
+
+/* List of Movies/Bottom */
+
+.bottom {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-items: center;
+}
+
+.movie-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 200px;
+  width: 150px;
+  margin: 10px;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.35);}
