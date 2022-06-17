@@ -12,8 +12,6 @@ export default function MovieForm({ setMovieTitle,
   return (
     <div className='form-and-preview'>
       <div className='movie-form'>
-
-  
         <form onSubmit={submitMovie}>
           <label>
             Title: <input required value={movieTitle} 

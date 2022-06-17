@@ -1,7 +1,6 @@
 import './App.css';
 import MovieForm from './MovieForm';
 import MovieList from './MovieList';
-import Movie from './Movie';
 
 import { useState, useEffect } from 'react';
 
@@ -13,12 +12,26 @@ function App() {
       year: '2001',
       color: 'red'
     },
+    {
+      title: 'The Northman',
+      director: 'Robert Eggers',
+      year: '2022',
+      color: 'blue'
+    },
+    {
+      title: 'The Black Phone',
+      director: 'Scott Derrickson',
+      year: '2022',
+      color: 'violet'
+    }
   ]);
   const [movieTitle, setMovieTitle] = useState('');
   const [movieDirector, setMovieDirector] = useState('');
   const [movieYearReleased, setMovieYearReleased] = useState('');
   const [movieColor, setMovieColor] = useState('red');
 
+  const [filterByName, setFilterByName] = useState('');
+  const [filteredMovies, setFilteredMovies] = useState(movies);
 
   function submitMovie(e) {
     e.preventDefault();
@@ -37,22 +50,32 @@ function App() {
     setMovieColor('');
   }
 
-  function handleDeleteMovie() {
+  function handleDeleteMovie(title) {
+    const index = movies.findIndex(movie => movie.title === title);
+    movies.splice(index, 1);
+    setMovies([...movies]);
+  }
+// Filter Movies
+  function handleFilterMovies(filterByName) {
+    setFilterByName(filterByName);
 
+    const filteredByName = movies.filter(movie => movie.title.toLowerCase()
+      .includes(filterByName.toLowerCase()));
+// If the filter argument is undefined, set the visible movies in state to be the array
+// of all movies.
+    setFilteredMovies(filteredByName);
   }
 
-  function handleFilterMovies() {
-
-  }
-
+// Manage state:
   useEffect(() => {
-
-  });
+    setFilteredMovies(movies);
+    setFilterByName('');
+  }, [movies]);
 
   return (
     <div className="App">
       <header>
-
+        Movies Sort of
       </header>
       <div className='top'>
         <MovieForm setMovieTitle={setMovieTitle}
@@ -65,11 +88,14 @@ function App() {
           movieColor={movieColor}
           submitMovie={submitMovie} />
       </div>
-
-      
+      <label>
+        Filter Movies by Title:
+        <input value={filterByName} onChange={(e) => handleFilterMovies(e.target.value)} />
+      </label>
+      <hr></hr>
 
       <div>
-        <MovieList movies={movies} 
+        <MovieList filteredMovies={filteredMovies} 
           handleDeleteMovie={handleDeleteMovie}/>
       </div>
 
