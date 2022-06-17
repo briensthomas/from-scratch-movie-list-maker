@@ -10,8 +10,8 @@ function App() {
   const [movieYearReleased, setMovieYearReleased] = useState('');
   const [movieColor, setMovieColor] = useState('');
 
-  function handleSubmit() {
-    
+  function handleSubmit(e) {
+    e.preventDefault();
   }
 
   return (
