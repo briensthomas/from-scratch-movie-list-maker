@@ -44,6 +44,7 @@ export default function MovieForm({
               <option value='violet'>Violet</option>
             </select>
           </label>
+          <button>Add Movie</button>
         </form>
       </div>
       <div className='movie-preview'>
